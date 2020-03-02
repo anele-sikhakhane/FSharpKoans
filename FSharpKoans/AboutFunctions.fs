@@ -274,8 +274,8 @@ module ``03: Putting the Function into Functional Programming`` =
         let l = j >> i
         i 3 |> should equal 16
         j 3 |> should equal 11
-        k 3 |> should equal 
-        l 3 |> should equal __
+        k 3 |> should equal 17
+        l 3 |> should equal 32
 
     [<Test>]
     let ``27 <<, the 'backwards compose' operator`` () =
@@ -285,24 +285,24 @@ module ``03: Putting the Function into Functional Programming`` =
         let j = double << add5
         let k = double << double << add5
         let l = j << i
-        i 3 |> should equal __
-        j 3 |> should equal __
-        k 3 |> should equal __
-        l 3 |> should equal __
+        i 3 |> should equal 11
+        j 3 |> should equal 16
+        k 3 |> should equal 32
+        l 3 |> should equal 32
 
     [<Test>]
     let ``28 Unit is used when there is no return value for a function``() = 
         // sendData is a function which is invoked ONLY for its side-effects
         // It might do something, and then it gives back a unit value.
         let sendData data = ()
-        sendData "some data to send..." |> should equal ___ // ... don't overthink this one!
+        sendData "some data to send..." |> should equal () // ... don't overthink this one!
    
     [<Test>]
     let ``29 Unit, as an input, conveys no data`` () = 
         let sayHello () = "hello"
-        sayHello |> should be ofType<FILL_ME_IN>
-        sayHello () |> should be ofType<FILL_ME_IN>
-        sayHello () |> should equal __
+        sayHello |> should be ofType<unit -> string>
+        sayHello () |> should be ofType<string>
+        sayHello () |> should equal "hello"
 
     (*
     When we develop real systems, we often run into problems
@@ -333,12 +333,12 @@ module ``03: Putting the Function into Functional Programming`` =
         let divideBy10 n () =
             n / 10
         let deferred = divideBy10 700
-        divideBy10 |> should be ofType<FILL_ME_IN>
-        deferred |> should be ofType<FILL_ME_IN>
-        divideBy10 850 |> should be ofType<FILL_ME_IN>
-        deferred () |> should be ofType<FILL_ME_IN>
-        deferred () |> should equal __
-        divideBy10 6300 () |> should equal __
+        divideBy10 |> should be ofType<int -> unit -> int>
+        deferred |> should be ofType<unit -> int>
+        divideBy10 850 |> should be ofType<int>
+        deferred () |> should be ofType<int>
+        deferred () |> should equal 70
+        divideBy10 6300 () |> should equal 630
 
     (*
         Sometimes we want to do something purely for a side-effect
