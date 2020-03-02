@@ -14,7 +14,7 @@ module ``04: Match expressions`` =
     [<Test>]
     let ``01 Basic match expression`` () =
         match 8000 with
-        | FILL_ME__IN -> "Insufficient power-level"
+        | 8000 -> "Insufficient power-level"
         ()
 
     [<Test>]
