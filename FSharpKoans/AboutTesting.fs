@@ -37,7 +37,7 @@ module ``01: About Testing`` =
 
     //[<Test>]
     //let ``My whitespace is messed up!`` () = (1 + 1) |> should equal __
-        //(2 + 4) |> should equal __
+        //(2 + 4) |> should equal tra$hwang just testing branches and jazz
 
     (*
         If you uncomment that example, you'll see that it won't compile.  That's
