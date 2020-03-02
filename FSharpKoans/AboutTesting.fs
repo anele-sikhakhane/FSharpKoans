@@ -44,13 +44,15 @@ module ``01: About Testing`` =
         because it uses MULTIPLE lines, but tries to put the first line of the block on the SAME line,
         and indent the rest of the lines of the block.  DON'T DO THIS!
     *)
+   
 
     [<Test>]
     let ``01 How this works`` () = // In F#, any sequence of characters between `` marks can be identifiers.  ``This is a long method name`` is way better than ThisIsALongMethodName !
         let expected_value = 1 + 1
-        let actual_value = __ //start by changing this line
+        let actual_value = 2 //start by changing this line
         actual_value |> should equal expected_value
    
     // Easy, right? Now try one more.
     [<Test>]
-    let ``02 Fill in the values`` () = (1 + 1) |> should equal __
+    let ``02 Fill in the values`` () = 
+        (1 + 1) |> should equal 2
