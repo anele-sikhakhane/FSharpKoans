@@ -36,9 +36,9 @@ module ``04: Match expressions`` =
         | 100 -> ()
         | 19 -> ()
         | y ->
-            y |> should equal 19
-            x |> should equal 213
-        y |> should equal 18
+           y |> should equal 213
+           x |> should equal 213
+        y |> should equal 19
         x |> should equal 213
 
     [<Test>]
@@ -65,11 +65,14 @@ module ``04: Match expressions`` =
     [<Test>]
     let ``05 Using a mapping function`` () =
         let mapper = function
-            | 3 -> "Joey" // write the cases for this function!
+            | 3 -> "Joey"
+            | 8 -> "Bingo"
+            | 11 -> "Kelvin"
+            | 15 -> "Kelvin"// write the cases for this function!
         mapper 3 |> should equal "Joey"
-       // mapper 8 |> should equal "Bingo"
-       // mapper 11 |> should equal "Kelvin"
-       // mapper 15 |> should equal "Kelvin"
+        mapper 8 |> should equal "Bingo"
+        mapper 11 |> should equal "Kelvin"
+        mapper 15 |> should equal "Kelvin"
 
     (*
         "The OR pattern is used when input data can match multiple patterns,
@@ -86,7 +89,7 @@ module ``04: Match expressions`` =
             | "sunset" -> "transition"
             | FILL__ME_IN
             | FILL__ME_IN
-            | FILL__ME_IN -> "failure"
+            | "Johnny Walker"|"Bell's"|"vodka" -> "failure"
             | _ -> "lolwut"
         f "lol" |> should equal "yolo"
         f "wut" |> should equal "yolo"
@@ -99,8 +102,8 @@ module ``04: Match expressions`` =
         let f input =
             match input with
             | 0,0 -> "Both 0"
-            | ___ | ___ -> sprintf "One 0, one %d" __
-            | _ -> "No 0"
+            | 3,0 | 0,4 -> sprintf "One 0, one %d" __
+            | 9,5 -> "No 0"
         f (3,0) |> should equal "One 0, one 3"
         f (0, 4) |> should equal "One 0, one 4"
         f (9, 5) |> should equal "No 0"
